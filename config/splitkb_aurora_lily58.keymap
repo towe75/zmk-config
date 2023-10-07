@@ -14,8 +14,9 @@
 #include "../zmk-nodefree-config/international_chars/german.dtsi"
 
 ZMK_BEHAVIOR(td_ae, tap_dance,
+    tapping-term-ms = <200>;
     bindings = <&kp A>, <&de_ae>;
-);
+)
 
 / {
 
