@@ -9,16 +9,25 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 
-#define HOST_OS 2  // set to 2 for macOS/Windows-Alt-Codes, default is 0 (Windows)
-#include "../zmk-nodefree-config/helper.h"
-#include "../zmk-nodefree-config/international_chars/german.dtsi"
-
-ZMK_BEHAVIOR(td_ae, tap_dance,
-    tapping-term-ms = <200>;
-    bindings = <&kp A>, <&de_ae>;
-)
-
 / {
+    macros {
+        m_ae: m_ae {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(U) &kp A>;
+            label = "M_AE";
+        };
+    };
+
+    behaviors {
+        td_ae: td_ae {
+            compatible = "zmk,behavior-tap-dance";
+            label = "AE";
+            #binding-cells = <0>;
+            tapping-term-ms = <100>;
+            bindings = <&kp A>, <&m_ae>;
+        };
+    };
 
 
     keymap {
