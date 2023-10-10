@@ -17,6 +17,18 @@
             bindings = <&kp LA(U) &kp A>;
             label = "M_AE";
         };
+        m_oe: m_oe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(U) &kp O>;
+            label = "M_OE";
+        };
+        m_ue: m_ue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(U) &kp U>;
+            label = "M_UE";
+        };
     };
 
     behaviors {
@@ -27,17 +39,6 @@
             tapping-term-ms = <180>;
             bindings = <&kp A>, <&m_ae>;
         };
-    };
-    macros {
-        m_oe: m_oe {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(U) &kp O>;
-            label = "M_OE";
-        };
-    };
-
-    behaviors {
         td_oe: td_oe {
             compatible = "zmk,behavior-tap-dance";
             label = "OE";
@@ -45,17 +46,6 @@
             tapping-term-ms = <180>;
             bindings = <&kp O>, <&m_oe>;
         };
-    };
-    macros {
-        m_ue: m_ue {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(U) &kp U>;
-            label = "M_UE";
-        };
-    };
-
-    behaviors {
         td_ue: td_ue {
             compatible = "zmk,behavior-tap-dance";
             label = "UE";
@@ -63,9 +53,6 @@
             tapping-term-ms = <180>;
             bindings = <&kp U>, <&m_ue>;
         };
-    };
-
-     behaviors {
         pht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_TAP";
@@ -76,7 +63,6 @@
             bindings = <&kp>, <&kp>;
         };
     };
-
 
 
     keymap {
