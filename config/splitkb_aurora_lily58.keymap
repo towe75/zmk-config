@@ -38,7 +38,7 @@
     };
 
     behaviors {
-        td_ae: td_oe {
+        td_oe: td_oe {
             compatible = "zmk,behavior-tap-dance";
             label = "OE";
             #binding-cells = <0>;
