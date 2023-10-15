@@ -40,23 +40,32 @@
             compatible = "zmk,behavior-tap-dance";
             label = "AE";
             #binding-cells = <0>;
-            tapping-term-ms = <180>;
+            tapping-term-ms = <170>;
             bindings = <&kp A>, <&m_ae>;
         };
         td_oe: td_oe {
             compatible = "zmk,behavior-tap-dance";
             label = "OE";
             #binding-cells = <0>;
-            tapping-term-ms = <180>;
+            tapping-term-ms = <170>;
             bindings = <&kp O>, <&m_oe>;
         };
         td_ue: td_ue {
             compatible = "zmk,behavior-tap-dance";
             label = "UE";
             #binding-cells = <0>;
-            tapping-term-ms = <180>;
+            tapping-term-ms = <170>;
             bindings = <&kp U>, <&m_ue>;
         };
+        ht: hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+         };
     };
 
 
@@ -74,7 +83,7 @@
             bindings = <
 &kp ESC   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                     &kp N6 &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
 &kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                      &kp Y  &td_ue   &kp I     &td_oe  &kp P    &kp MINUS
-&kp LSHFT &td_ae  &kp S &kp D &mt LSHFT F &mt LGUI G           &mt RGUI H &mt RSHFT J &kp K    &kp L   &kp SEMI &kp SQT
+&kp LSHFT &td_ae &kp S  &ht LCTRL D &ht LSHFT F &ht LGUI G           &ht RGUI H &ht RSHFT J &ht RCTRL K &kp L   &kp SEMI &kp SQT
 &kp LCTRL &kp Z  &kp X  &kp C    &kp V    &kp B  &kp LBKT   &kp RBKT &kp N  &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
                         &kp LALT &kp LGUI &mo 1  &kp SPACE  &kp RET  &mo 2  &kp BSPC &kp RGUI
             >;
