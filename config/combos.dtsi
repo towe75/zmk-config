@@ -12,4 +12,4 @@
 #define COMBO_TERM_SLOW 30
 
 /* Horizontal combos - right hand */
-ZMK_COMBO(bspc,  &kp BSPC,      RB0 RB1,     DEF LOW UP, COMBO_TERM_FAST)
+ZMK_COMBO(bspc,  &kp BSPC,      RB0 RB1,     L_DEF L_LOW L_UP, COMBO_TERM_FAST)

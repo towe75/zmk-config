@@ -12,9 +12,9 @@
 #include "../zmk-nodefree-config/helper.h"
 
 
-#define DEF 0
-#define LOW 1
-#define UP 2
+#define L_DEF 0
+#define L_LOW 1
+#define L_UP 2
 
 #include "combos.dtsi"
 
