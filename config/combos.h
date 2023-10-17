@@ -11,5 +11,12 @@
 #define COMBO_TERM_FAST 18
 #define COMBO_TERM_SLOW 30
 
+combos {
 /* Horizontal combos - right hand */
-ZMK_COMBO(bspc,  &kp BSPC,      RB0 RB1,     L_DEF L_LOW L_UP, COMBO_TERM_FAST)
+    compatible = "zmk,combos";
+    combo_esc {
+        timeout-ms = <COMBO_TERM_FAST>;
+        key-positions = <RB0 RB1>;
+        bindings = <&kp BSPC>;
+    };
+};
