@@ -1,0 +1,40 @@
+macros {
+    // mac umlaut macros with alt+u compose
+    m_ae: m_ae {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(U) &kp A>;
+        label = "M_AE";
+    };
+    m_oe: m_oe {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(U) &kp O>;
+        label = "M_OE";
+    };
+    m_ue: m_ue {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(U) &kp U>;
+        label = "M_UE";
+    };
+    // UPPERCASE umlaut macros
+    m_uae: m_uae {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(U) &kp LS(A)>;
+        label = "M_UAE";
+    };
+    m_uoe: m_uoe {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(U) &kp LS(O)>;
+        label = "M_UOE";
+    };
+    m_uue: m_uue {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(U) &kp LS(U)>;
+        label = "M_UUE";
+    };
+};

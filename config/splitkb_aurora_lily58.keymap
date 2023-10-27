@@ -23,56 +23,40 @@
 
 / {
 
-    #include "combos.h"
-
-    macros {
-        m_ae: m_ae {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(U) &kp A>;
-            label = "M_AE";
-        };
-        m_oe: m_oe {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(U) &kp O>;
-            label = "M_OE";
-        };
-        m_ue: m_ue {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(U) &kp U>;
-            label = "M_UE";
-        };
-    };
+    #include "combos.dti"
+    #include "macros.dti"
 
     behaviors {
+        // umlaut tab dance case
+        // 1 tab = regular aeo key,
+        // 2x tab = lower case aeo umlaut
+        // 3x tab = UPPER case aeo umlaut
         td_ae: td_ae {
             compatible = "zmk,behavior-tap-dance";
             label = "AE";
             #binding-cells = <0>;
-            tapping-term-ms = <160>;
-            bindings = <&kp A>, <&m_ae>;
+            tapping-term-ms = <180>;
+            bindings = <&kp A>, <&m_ae>, <&m_uae>;
         };
         td_oe: td_oe {
             compatible = "zmk,behavior-tap-dance";
             label = "OE";
             #binding-cells = <0>;
-            tapping-term-ms = <160>;
-            bindings = <&kp O>, <&m_oe>;
+            tapping-term-ms = <180>;
+            bindings = <&kp O>, <&m_oe>, <&m_uoe>;
         };
         td_ue: td_ue {
             compatible = "zmk,behavior-tap-dance";
             label = "UE";
             #binding-cells = <0>;
-            tapping-term-ms = <160>;
-            bindings = <&kp U>, <&m_ue>;
+            tapping-term-ms = <180>;
+            bindings = <&kp U>, <&m_ue>, <&m_uue>;
         };
         ht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
             quick-tap-ms = <0>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;

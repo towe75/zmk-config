@@ -14,9 +14,30 @@
 combos {
 /* Horizontal combos - right hand */
     compatible = "zmk,combos";
-    combo_esc {
+    // HJ -> Backspace
+    combo_bspc {
         timeout-ms = <COMBO_TERM_FAST>;
         key-positions = <RB0 RB1>;
         bindings = <&kp BSPC>;
+    };
+    // UJ -> Cursor up
+    combo_up {
+        timeout-ms = <COMBO_TERM_FAST>;
+        key-positions = <RB1 RM1>;
+        bindings = <&kp UP>;
+    };
+    // JM -> Cursor down
+    combo_down {
+        timeout-ms = <COMBO_TERM_FAST>;
+        key-positions = <RB1 RF1>;
+        bindings = <&kp DOWN>;
+    };
+
+/* Horizontal combos - left hand */
+    // FG -> DEL
+    combo_del {
+        timeout-ms = <COMBO_TERM_FAST>;
+        key-positions = <LB1 LB0>;
+        bindings = <&kp DEL>;
     };
 };
