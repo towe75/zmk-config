@@ -17,6 +17,7 @@
 #define L_LOW 1
 #define L_UP 2
 #define L_NAV 3
+#define L_NUM 4
 
 &mt {
     tapping-term-ms = <200>;
@@ -88,7 +89,7 @@
 // |       | ALT | CTRL| GUI  | SHFT | NAV  |                   |      | SHFT  | GUI   | CTRL | ALT   |       |
 // ------------------------------------------------------------------------------------------------------------
 // |  CTRL |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-// |       |     |     |      |      |      |        |  |       |      |       |       |      |       |       |
+// |       | NUM |     |      |      |      |        |  |       |      |       |       |      |       |       |
 // ------------------------------------------------------------------------------------------------------------
 //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 // ------------------------------------------------------------------------------------------------------------
@@ -96,7 +97,7 @@
 &kp ESC   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                     &kp N6 &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
 &kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                      &kp Y  &kp U   &kp I      &kp O  &kp P    &kp MINUS
 &kp LSHFT &ht LALT A &ht LCTRL S &ht LGUI D &ht LSHFT F &b_lt 3 G      &kp H &ht RSHFT J &ht RGUI K &ht RCTRL L &ht RALT SEMI &kp SQT
-&kp LCTRL &kp Z  &kp X  &kp C    &kp V    &kp B  &kp LBKT   &kp RBKT &kp N  &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+&kp LCTRL &b_lt 4 Z &kp X  &kp C    &kp V    &kp B  &kp LBKT   &kp RBKT &kp N  &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
                         &kp LALT &kp LGUI &mo 1  &kp SPACE  &kp RET  &mo 2  &kp BSPC &kp RGUI
             >;
 
@@ -146,6 +147,7 @@
 
         };
 
+// hold "g" for num_layer !
         nav_layer {
 // ------------------------------------------------------------------------------------------------------------
 // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
@@ -164,6 +166,29 @@
 &trans    &trans &trans &trans  &trans  &trans                       &kp LEFT    &kp DOWN  &kp UP    &kp RIGHT &trans   &trans
 &trans    &trans &trans &trans  &trans  &trans    &trans   &trans    &kp C_PREV  &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT  &trans    &trans
                         &trans  &trans  &trans    &trans   &kp C_PP  &trans      &trans    &trans
+            >;
+
+        };
+
+// hold "z" for num_layer !
+        num_layer {
+// ------------------------------------------------------------------------------------------------------------
+// |       |     |     |      |      |      |                   |      |       |       |      |       |       |
+// ------------------------------------------------------------------------------------------------------------
+// |       |     |     |      |      |      |                   |  7   |  8    |  9    |  -   |  *    |       |
+// ------------------------------------------------------------------------------------------------------------
+// |       |     |     |      |      |      |                   |  4   |  5    |  6    |  +   |  /    |       |
+// ------------------------------------------------------------------------------------------------------------
+// |       |     |     |      |      |      |        |  |       |  1   |  2    |  3    |  .   |  ,    |       |
+// ------------------------------------------------------------------------------------------------------------
+//                     |      |      |      |        |  |ENTER  |  0   |  BSPC |       |  
+// ------------------------------------------------------------------------------------------------------------
+            bindings = <
+&trans    &trans &trans &trans  &trans  &trans                       &trans      &trans    &trans    &trans   &trans    &trans
+&trans    &trans &trans &trans  &trans  &trans                       &kp N7  &kp N8  &kp N9 &kp KP_MINUS &kp KP_ASTERISK  &trans
+&trans    &trans &trans &trans  &trans  &trans                       &kp N4  &kp N5  &kp N6 &kp KP_PLUS  &kp KP_DIVIDE   &trans
+&trans    &trans &trans &trans  &trans  &trans    &trans   &trans    &kp N1  &kp N2  &kp N3 &kp KP_DOT   &kp COMMA &trans
+                        &trans  &trans  &trans    &trans   &kp RET   &kp N0  &kp BSPC &trans     
             >;
 
         };
