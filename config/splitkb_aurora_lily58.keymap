@@ -16,6 +16,7 @@
 #define L_DEF 0
 #define L_LOW 1
 #define L_UP 2
+#define L_NAV 3
 
 &mt {
     tapping-term-ms = <200>;
@@ -60,6 +61,15 @@
             quick-tap-ms = <0>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
+        };
+        b_lt: layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;
          };
     };
 
@@ -75,21 +85,21 @@
 // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |   U   |  I    |   O  |   P   |   -   |
 // ------------------------------------------------------------------------------------------------------------
 // | SHIFT |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-// |       | ALT | CTRL| GUI  | SHFT |      |                   |      | SHFT  | GUI   | CTRL | ALT   |       |
+// |       | ALT | CTRL| GUI  | SHFT | NAV  |                   |      | SHFT  | GUI   | CTRL | ALT   |       |
 // ------------------------------------------------------------------------------------------------------------
 // |  CTRL |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
+// |       |     |     |      |      |      |        |  |       |      |       |       |      |       |       |
 // ------------------------------------------------------------------------------------------------------------
 //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 // ------------------------------------------------------------------------------------------------------------
             bindings = <
 &kp ESC   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                     &kp N6 &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
 &kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                      &kp Y  &kp U   &kp I      &kp O  &kp P    &kp MINUS
-&kp LSHFT &ht LALT A &ht LCTRL S &ht LGUI D &ht LSHFT F &kp G           &kp H &ht RSHFT J &ht RGUI K &ht RCTRL L &ht RALT SEMI &kp SQT
+&kp LSHFT &ht LALT A &ht LCTRL S &ht LGUI D &ht LSHFT F &b_lt 3 G      &kp H &ht RSHFT J &ht RGUI K &ht RCTRL L &ht RALT SEMI &kp SQT
 &kp LCTRL &kp Z  &kp X  &kp C    &kp V    &kp B  &kp LBKT   &kp RBKT &kp N  &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
                         &kp LALT &kp LGUI &mo 1  &kp SPACE  &kp RET  &mo 2  &kp BSPC &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         lower_layer {
@@ -112,7 +122,6 @@
                                               &trans            &trans       &trans    &trans   &trans    &trans    &trans    &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         raise_layer {
@@ -135,7 +144,28 @@
                         &trans  &trans  &trans    &trans   &trans    &trans      &trans    &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        nav_layer {
+// ------------------------------------------------------------------------------------------------------------
+// |       |     |     |      |      |      |                   |      |       |       |      |       |       |
+// ------------------------------------------------------------------------------------------------------------
+// |       |     |     |      |      |      |                   | HOME | PG_DN | PG_UP | END  |       |       |
+// ------------------------------------------------------------------------------------------------------------
+// |       |     |     |      |      |      |                   |  <-  |   v   |   ^   |  ->  |       |       |
+// ------------------------------------------------------------------------------------------------------------
+// |       |     |     |      |      |      |        |  |       | PREV | VOL-  | VOL+  | NEXT |       |       |
+// ------------------------------------------------------------------------------------------------------------
+//                     |      |      |      |        |  |PLAY/P |      |       |       |
+// ------------------------------------------------------------------------------------------------------------
+            bindings = <
+&trans    &trans &trans &trans  &trans  &trans                       &trans      &trans    &trans    &trans   &trans    &trans
+&trans    &trans &trans &trans  &trans  &trans                       &kp HOME    &kp PG_DN &kp PG_UP &kp END  &trans  &trans
+&trans    &trans &trans &trans  &trans  &trans                       &kp LEFT    &kp DOWN  &kp UP    &kp RIGHT &trans   &trans
+&trans    &trans &trans &trans  &trans  &trans    &trans   &trans    &kp C_PREV  &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT  &trans    &trans
+                        &trans  &trans  &trans    &trans   &kp C_PP  &trans      &trans    &trans
+            >;
+
         };
     };
 };
